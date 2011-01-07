@@ -5,11 +5,8 @@ require "rake/rdoctask"
 task :default => :spec
 
 require "rspec"
-# require "rspec/rake/spectask"
-
 RSpec::Rake::SpecTask.new do |t|
-  t.spec_opts = %w(--format specdoc --colour)
-  t.libs = ["spec"]
+  t.rspec_opts = %w(--colour)
 end
 
 # This builds the actual gem. For details of what all these options
@@ -18,10 +15,9 @@ end
 #   http://rubygems.org/read/chapter/20
 #
 spec = Gem::Specification.new do |s|
-
   # Change these as appropriate
   s.name              = "pony-test"
-  s.version           = "0.1.0"
+  s.version           = "0.1.1"
   s.summary           = "Collection of helper methods and Cucumber steps for testing email through Pony"
   s.author            = "John Mendonca"
   s.email             = "joaosihno@gmail.com"
