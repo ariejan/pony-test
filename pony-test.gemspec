@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = %q{2011-01-06}
   s.email = %q{joaosihno@gmail.com}
   s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["Rakefile", "README.rdoc", "spec", "lib/email_steps.rb", "lib/pony-test.rb"]
+  s.files = ["Rakefile", "README.rdoc", "spec", "lib/pony-test", "lib/pony-test/email_steps.rb", "lib/pony-test.rb"]
   s.homepage = %q{http://github.com/johnmendonca/pony-test}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
