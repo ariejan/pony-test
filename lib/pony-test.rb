@@ -7,7 +7,7 @@ end
 #reopen Pony module and replace mail method
 module Pony
   def self.mail(options)
-    TestHelpers.deliver(build_tmail(options))
+    TestHelpers.deliver(build_mail(options))
   end
 
   module TestHelpers
@@ -88,7 +88,7 @@ module Pony
       end
 
       if opts[:with_body]
-        email = email.select { |m| m.body =~ Regexp.new(opts[:with_body]) }
+        email = email.select { |m| m.body.to_s =~ Regexp.new(opts[:with_body]) }
       end
 
       if email.empty?
@@ -100,14 +100,14 @@ module Pony
     alias_method :find_email, :find_email_for
 
     def email_links(email = current_email)
-      links = URI.extract(email.body, ['http', 'https'])
+      links = URI.extract(email.body.to_s, ['http', 'https'])
       raise "No links found in #{email.body}" if links.nil? || links.empty?
       links
     end
 
     def email_links_matching(pattern, email = current_email)
       pattern = /#{Regexp.escape(pattern)}/ unless pattern.is_a?(Regexp)
-      links = email_links(email).select { |link| link =~ pattern }
+      links   = email_links(email).select { |link| link =~ pattern }
       raise "No link found matching #{pattern.inspect} in #{email.body}" if links.nil? || links.empty?
       links
     end

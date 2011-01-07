@@ -4,9 +4,10 @@ require "rake/rdoctask"
 
 task :default => :spec
 
-require "spec"
-require "spec/rake/spectask"
-Spec::Rake::SpecTask.new do |t|
+require "rspec"
+# require "rspec/rake/spectask"
+
+RSpec::Rake::SpecTask.new do |t|
   t.spec_opts = %w(--format specdoc --colour)
   t.libs = ["spec"]
 end
